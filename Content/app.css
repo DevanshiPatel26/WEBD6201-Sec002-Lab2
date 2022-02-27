@@ -1,0 +1,93 @@
+/* Home Page Heading */
+#HPHeading  {
+    color: antiquewhite;
+    position: fixed;
+    font-size: 100px;
+    top: 30%;
+    left: 50%;
+}
+
+/* Home Page Heading 1 */
+#HPHeading1  {
+color: rgb(240, 193, 132);
+position: fixed;
+font-size: 80px;
+top: 40%;
+left: 51%;
+}
+
+/* Home Page Heading 2 */
+#HPHeading2  {
+    color: rgb(240, 193, 132);
+    position: fixed;
+    font-size: 80px;
+    top: 50%;
+    left: 52%;
+}
+
+/* Products Page Heading 1 */
+#PPHeading1  {
+    color: navy;
+    /* position: fixed; */
+    font-size: 50px;
+    top: 1%;
+    right: 37%;
+}
+
+/* Products Page Heading 2 */
+#PPHeading2  {
+    color: black;
+    font-size: 35px;
+    text-decoration: underline;
+}
+
+/* Products Page paragraph 1 */
+#PPPara1    {
+    color: black;
+    font-size: 24px;
+}
+
+/* Background color */
+#MainBackground{
+    background-color:grey
+}
+
+/* Products Page Images  */
+#PPImage1{
+    height: 300px;
+    width: 500px;
+}
+
+#MainImage1
+{
+    width: 450px;
+    height: 350px;
+    border: 1px solid;
+}
+
+#MainImage2
+{
+    width: 450px;
+    height: 350px;
+    border: 1px solid;
+}
+
+#MainImage3
+{
+    width: 450px;
+    height: 350px;
+    border: 1px solid;
+}
+
+#MainImage4
+{
+    width: 350px;
+    height: 550px;
+    border: 1px solid;
+}
+
+#MainImage5 {
+    width: 350px;
+    height: 550px;
+    border: 1px solid;
+}
