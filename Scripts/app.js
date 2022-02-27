@@ -407,15 +407,16 @@ class User
                 }
             })
         })
-    
     }
+
+
+    /**
+     * The DisplayRegisterPage() function used to validate the first name, last name, email address, password and 
+     * to check the values of confirm password and the register button. It also shows the inputs in the console.
+     */
 
     function DisplayRegisterPage()
     {
-
-
-        //RegisterPageValidation();
-                // Document is ready
         $(document).ready(function () {
             
             // Validate FirstName
@@ -426,26 +427,36 @@ class User
                 });
                 
                 function validateFirstname() {
+                    // Create variable to get the input value
                 let firstnameValue = $('#FirstName').val();
+
+                // Check if the input is empty or not
                 if (firstnameValue.length == '') {
+
+                    // Show the error message
                 $('#ErrorMessage').show();
                     firstNameError = false;
                     return false;
                 }
+
+                // Check the minimum length is 2 or not
                 else if((firstnameValue.length < 2)) {
+
+                    // Show the error message
                     $('#ErrorMessage').show();
-                    $('#ErrorMessage').html
-            ("Length of username must be greater than 2");
+                    $('#ErrorMessage').html("Length of firstname must be greater than 2");
                     firstNameError = false;
                     return false;
                 }
+
+                // Hide the error message
                 else {
                     $('#ErrorMessage').hide();
                 }
                 }
 
 
-                // Validate FirstName
+                // Validate LastName
                 $('#ErrorMessage').hide();
                 let lastNameError = true;
                 $('#LastName').keyup(function () {
@@ -453,44 +464,66 @@ class User
                 });
                 
                 function validateLastName() {
+
+                    // Create variable to get the input value
                 let lastNameValue = $('#LastName').val();
+
+                // Check if the input value is empty or not
                 if (lastNameValue.length == '') {
+
+                    // Show the error message
                 $('#ErrorMessage').show();
                     lastNameError = false;
                     return false;
                 }
+
+                // Check the length of the input value
                 else if((lastNameValue.length < 2)) {
+
+                    // Show the error message
                     $('#ErrorMessage').show();                  
-                    $('#ErrorMessage').html
-            ("Length of username must be greater than 2");
+                    $('#ErrorMessage').html("Length of lastname must be greater than 2");
                     lastNameError = false;
                     return false;
                 }
                 else {
+
+                    // Hide the error message
                     $('#ErrorMessage').hide();
                 }
                 }
+
             
             // Validate Email
-
                 $('#ErrorMessage').hide();
                 let emailError = true;
                 $('#emailAddress').keyup(function () {
                     validateEmail();
                 });
             function validateEmail() {
+
+                // Create variable to get input value  
                 let emailValue = $('#emailAddress').val();
+
+                // Check the Regex for email
                 let regex = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
+
+                // Check the input value is empty or not
                 if (emailValue.length == '') {
+
+                    // Show the error message
                     $('#ErrorMessage').show();
                         emailError = false;
                         return false;
                     }
+
+                    // Check the regex
                 else if(!regex.test(emailValue))
                 {
+
+                    // Show rhe error message
                     $('#ErrorMessage').show();
-                    $('#ErrorMessage').html
-                    ("Invalid Email");
+                    $('#ErrorMessage').html("Email Address is Invalid.");
                                         
                     emailError = false;
                     return false;
@@ -500,24 +533,6 @@ class User
                 {
                     $('#ErrorMessage').hide();
                 }
-            /* const email = document.getElementById('emailAddress');
-            email.addEventListener('blur', ()=>{
-                let regex =
-                /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{8,}$/;
-                let s = email.value;
-                if(regex.test(s)){
-                    $('#ErrorMessage').hide();
-                    emailError = true;
-                    }
-                    else{
-                        
-                        $('#ErrorMessage').show();
-                        $('#ErrorMessage').html
-                        ("Invalid Email");
-                                            
-                        emailError = false;
-                    }
-                })  */
             }
                 
             //Validate Password
@@ -527,21 +542,29 @@ class User
                     validatePassword();
                 });
                 function validatePassword() {
+                    // Create variable to get input value
                     let passwordValue =
                         $('#password').val();
+
+                        // Check the length of the password
                     if (passwordValue.length == '') {
+
+                        // Show the error message
                         $('#ErrorMessage').show();
                         passwordError = false;
                         return false;
                     }
+
+                    // Check the length is atleast 6 
                     if (passwordValue.length < 6) {
+
+                        // Show the error message
                         $('#ErrorMessage').show();
-                        $('#ErrorMessage').html
-                        ("length of your password must be atleast 6 characters.");
-                       // $('#ErrorMessage').css("color", "red");
+                        $('#ErrorMessage').html ("length of your password must be atleast 6 characters.");
                         passwordError = false;
                         return false;
                     } else {
+                        // Hide the error message
                         $('#ErrorMessage').hide();
                     }
                 }
@@ -553,18 +576,23 @@ class User
                     validateConfirmPassword();
                 });
                 function validateConfirmPassword() {
+                    // Create variable to get input value
                     let confirmPasswordValue =
                         $('#confirmPassword').val();
                     let passwordValue =
                         $('#password').val();
+
+                        // Check if the confirm password is same as password or not
                     if (passwordValue != confirmPasswordValue) {
+
+                        // If not, show an error message
                         $('#ErrorMessage').show();
                         $('#ErrorMessage').html(
                             "**Password didn't Match");
-                        //$('#ErrorMessage').css("color", "red");
                         confirmPasswordError = false;
                         return false;
                     } else {
+                        // hide the error message
                         $('#ErrorMessage').hide();
                     }
                 }
@@ -576,7 +604,8 @@ class User
                     validatePassword();
                     validateConfirmPassword();
                     validateEmail();
-                
+                    
+                    // Check for the errors
                     if ((firstNameError == true) &&
                         (lastNameError == true) &&
                         (passwordError == true) &&
@@ -584,9 +613,13 @@ class User
                         (emailError == true)) {
                         return true;
                     } else {
+
+                        // Create a new instance of the User Class
                         let user = new User($('#FirstName').val(), $('#LastName').val() , $('#emailAddress').val(), $('#password').val());
+                        // Display it in the console
                         console.log(user.toString());
 
+                        // Default Form Behaviour
                         document.getElementById("FirstName").value.remove();
                         document.getElementById("LastName").value.remove();
                         document.getElementById("emailAddress").value.remove();
