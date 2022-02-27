@@ -560,7 +560,7 @@ class User
 
                         // Show the error message
                         $('#ErrorMessage').show();
-                        $('#ErrorMessage').html ("length of your password must be atleast 6 characters.");
+                        $('#ErrorMessage').html ("Length of your password must be atleast 6 characters.");
                         passwordError = false;
                         return false;
                     } else {
@@ -587,8 +587,7 @@ class User
 
                         // If not, show an error message
                         $('#ErrorMessage').show();
-                        $('#ErrorMessage').html(
-                            "**Password didn't Match");
+                        $('#ErrorMessage').html("Password and Confirm Password didn't Match");
                         confirmPasswordError = false;
                         return false;
                     } else {
