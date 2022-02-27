@@ -8,88 +8,71 @@
  * ID: 100805085
  * 
  * Date Completed: 11th February, 2022
+ * Date Updated: 27th February, 2022
  */
 
 
 
- class User
- {
-     // getters and setters
-     get FirstName()
-     {
-         return this.m_firstName;
-     }
- 
-     set FirstName(first_name)
-     {
-         this.m_firstName = first_name;
-     }
- 
-     get LastName()
-     {
-         return this.m_lastName;
-     }
- 
-     set LastName(last_name)
-     {
-         this.m_lastName = last_name;
-     }
- 
-     get EmailAddress()
-     {
-         return this.m_emailAddress;
-     }
- 
-     set EmailAddress(email_address)
-     {
-         this.m_emailAddress = email_address;
-     }
-     
-     get Password()
-     {
-         return this.m_password;
-     }
- 
-     set Password(password)
-     {
-         this.m_password = password;
-     }
-     // constructor
-     constructor(firstName = "", lastName = "", emailAddress = "", password = "")
-     {
-         this.FirstName = firstName;
-         this.LastName = lastName;
-         this.EmailAddress = emailAddress;
-         this.Password = password;
-     }
- 
-     // public utility methods
- 
-    //  serialize()
-    //  {
-    //      if(this.FullName !== "" && this.ContactNumber !== "" && this.EmailAddress !== "")
-    //      {
-    //          return `${this.FullName},${this.ContactNumber},${this.EmailAddress}`;
-    //      }
-    //      console.error("One or more properties of the Contact Object are missing or invalid");
-    //      return null;
-    //  }
- 
-    //  deserialize(data) // assume that data is in a comma-separated format (string array of properties)
-    //  {
-    //      let propertyArray = data.split(",");
-    //      this.FullName = propertyArray[0];
-    //      this.ContactNumber = propertyArray[1];
-    //      this.EmailAddress = propertyArray[2];
-    //  }
- 
-     // overridden methods
- 
-     toString()
-     {
-         return `First Name: ${this.FirstName} \nLast Name: ${this.LastName} \nEmail Address: ${this.EmailAddress}  \nPassword: ${this.Password}`;
-     }
- }
+// User Class
+class User
+{
+    // getters and setters
+    get FirstName()
+    {
+        return this.m_firstName;
+    }
+
+    set FirstName(first_name)
+    {
+        this.m_firstName = first_name;
+    }
+
+    get LastName()
+    {
+        return this.m_lastName;
+    }
+
+    set LastName(last_name)
+    {
+        this.m_lastName = last_name;
+    }
+
+    get EmailAddress()
+    {
+        return this.m_emailAddress;
+    }
+
+    set EmailAddress(email_address)
+    {
+        this.m_emailAddress = email_address;
+    }
+    
+    get Password()
+    {
+        return this.m_password;
+    }
+
+    set Password(password)
+    {
+        this.m_password = password;
+    }
+
+    // constructor
+    constructor(firstName = "", lastName = "", emailAddress = "", password = "")
+    {
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.EmailAddress = emailAddress;
+        this.Password = password;
+    }
+
+// overridden toString() method
+
+    toString()
+    {
+        return `First Name: ${this.FirstName} \nLast Name: ${this.LastName} \nEmail Address: ${this.EmailAddress}  \nPassword: ${this.Password}`;
+    }
+}
 
 
 
@@ -129,6 +112,7 @@
     let list = document.getElementById("myList");
     list.insertBefore(HRList, list.childNodes[11]);
 
+
     /**
     * Function to display the content in home page.
     */
@@ -159,6 +143,7 @@
         MainContent.appendChild(MainHeading2);
         MainContent.appendChild(MainHeading3);
     }
+
 
     /**
     * Function to display the content in products page. The projects we did will be displayed in this page.
@@ -218,6 +203,7 @@
         MainContent.appendChild(MainParagraph3);
         MainContent.appendChild(MainImage3);
     }
+
 
     /**
     * The DisplayServicesPage() function loads the Services pages which consists of text and Images.
@@ -285,6 +271,8 @@
         MainContent.appendChild(MainImage3); 
     }
 
+
+
     /**
     * This DisplayAboutPage() function loads the About Us page.
     * It gives information about the us, which includes our name, qualification, image and resume link.
@@ -351,6 +339,7 @@
         MainContent.appendChild(MainImage4);
     }
 
+
     /**
      * The DisplayContactPage() function is used to get all the contact information from the customer.
     */
@@ -368,48 +357,56 @@
         });
     }
 
+
+
+    /**
+     * The DisplayLoginPage() function is used to display the username on the Navbar when the login button is clicked.
+    */
     function DisplayLoginPage()
     {
         $(document).ready(function () {
-        $('#logibButton').click(function () {
-            console.log("123");
-            let usernameValue = $('#userName').val();
-            let passwordValue = $('#password').val();
-            if ((usernameValue.length == '') || (passwordValue.length == '')) {
-            
+            // When the login button is clicked,
+            $('#loginButton').click(function () {
+
+                // Create variables to get the values
+                let usernameValue = $('#userName').val();
+                let passwordValue = $('#password').val();
+
+                // Check if the input value is empty or not
+                if ((usernameValue.length == '') || (passwordValue.length == '')) {
+                
+                    return false;
+                }
+
+                // If the input value are not empty, 
+                else {
+
+                /**
+                * Add another link to Navbar between Contact Us link and Log in link.
+                */ 
+                // create an element(s) to insert
+                let HRList1 = document.createElement("li");
+                let HRLink1 = document.createElement("a");
+                let HRIcon1 = document.createElement("i");
+
+                // configure the new element
+                HRLink1.setAttribute("class", "nav-link");
+                HRIcon1.setAttribute("class", "fa-solid fa-user ");
+                let HRNode1 = document.createTextNode($('#userName').val());
+                HRLink1.setAttribute("href", "#");
+
+                // Add / Insert the new element
+                HRLink1.appendChild(HRIcon1);
+                HRLink1.appendChild(HRNode1);
+                HRList1.appendChild(HRLink1)
+                //get an entry point(s) reference
+                let list = document.getElementById("myList");
+                list.insertBefore(HRList1, list.childNodes[13]);
+
                 return false;
-            }
-            else {
-/**
-            * Add another link to Navbar between Contact Us link and Log in link.
-            */ 
-            // create an element(s) to insert
-            let HRList1 = document.createElement("li");
-            let HRLink1 = document.createElement("a");
-            let HRIcon1 = document.createElement("i");
-
-            // configure the new element
-            HRLink1.setAttribute("class", "nav-link");
-            HRIcon1.setAttribute("class", "fa-solid fa-user ");
-            let HRNode1 = document.createTextNode($('#userName').val());
-            HRLink1.setAttribute("href", "#");
-
-            // Add / Insert the new element
-            HRLink1.appendChild(HRIcon1);
-            HRLink1.appendChild(HRNode1);
-            HRList1.appendChild(HRLink1)
-            //get an entry point(s) reference
-            let list = document.getElementById("myList");
-            list.insertBefore(HRList1, list.childNodes[13]);
-
-            //document.getElementById("userName").value.remove();
-            //document.getElementById("password").value.remove();
-            $(this).val('');
-
-            return false;
-            }
+                }
+            })
         })
-    })
     
     }
 
